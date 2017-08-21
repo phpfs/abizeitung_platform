@@ -1,0 +1,43 @@
+<h2 md-dialog-title>Stilblüte erstellen</h2>
+<md-dialog-content>
+  <form #form="ngForm">
+    <div class='row'>
+      <md-input-container class="col s12">
+        <input mdInput
+               required placeholder="Kurs" type="text"
+               [(ngModel)]="inputData.course" name="course"
+               #course="ngModel">
+        <md-error *ngIf="course.errors">
+          Bitte gib den Kurs oder Kontext an, in dem die Stilblüte entstanden ist
+        </md-error>
+      </md-input-container>
+    </div>
+    <div class='row'>
+      <md-input-container class="col s12">
+      <textarea mdInput style="resize: vertical; height:5rem"
+                required placeholder="Text" type="text"
+                [(ngModel)]="inputData.content" name="content"
+                #content="ngModel"></textarea>
+        <md-error *ngIf="content.errors">
+          Bitte gib den Text der Stilblüte ein
+        </md-error>
+      </md-input-container>
+    </div>
+    <div class='row'>
+      <md-input-container class="col s12">
+        <input mdInput
+               required placeholder="Person, die es gesagt hat" type="text"
+               [(ngModel)]="inputData.author" name="author"
+               #author="ngModel">
+        <md-error *ngIf="author.errors">
+          Bitte gib die Person an, die diese Stilblüte geschaffen hat.
+        </md-error>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button  [disabled]="!form.valid" (click)="create()" id="create"
+          class="col s5 green darken-1 white-text">Erstellen
+  </button>
+</md-dialog-actions>

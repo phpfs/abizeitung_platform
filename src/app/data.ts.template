@@ -1,0 +1,6 @@
+
+// Hier Lehrernamen einfügen
+export const Lehrer = [];
+
+// Hier Schülernamen einfügen
+export const Schueler = [];

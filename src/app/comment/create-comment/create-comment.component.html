@@ -1,0 +1,33 @@
+<h2 md-dialog-title>Kommentar erstellen</h2>
+<md-dialog-content>
+  <form #form="ngForm">
+    <div class='row'>
+      <div class="col s12">
+        <md-select required style="width:100%;text-align: left" placeholder="Name" [(ngModel)]="inputData.target"
+                   #target="ngModel"
+                   name="target">
+          <md-option *ngFor="let sName of validTargets" [value]="sName">{{ sName }}</md-option>
+        </md-select>
+        <md-error style="width:100%;text-align: left;padding-top:12px;" *ngIf="target.invalid && target.touched">
+          Person <strong>muss</strong> ausgewählt werden
+        </md-error>
+      </div>
+    </div>
+    <div class='row'>
+      <md-input-container class="col s12">
+      <textarea mdInput style="resize: vertical; height:7rem"
+                required placeholder="Text" type="text"
+                [(ngModel)]="inputData.content" name="content"
+                #content="ngModel"></textarea>
+        <md-error *ngIf="content.errors">
+          Bitte gib deinen Kommentar zu ihr ein
+        </md-error>
+      </md-input-container>
+    </div>
+  </form>
+</md-dialog-content>
+<md-dialog-actions>
+  <button md-button [disabled]="!form.valid" (click)="create()" id="create"
+          class="col s5 green darken-1 white-text">Erstellen
+  </button>
+</md-dialog-actions>

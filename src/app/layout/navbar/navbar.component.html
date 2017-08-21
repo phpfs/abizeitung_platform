@@ -1,0 +1,11 @@
+<!-- TODO: figure out if the <nav> should go inside of a <header> element. -->
+<nav class="navbar">
+  <a md-button routerLink="stil" *ngIf="afAuth.auth.currentUser">Stilblüten</a>
+  <a md-button routerLink="comment" *ngIf="afAuth.auth.currentUser">Kommentare</a>
+  <div class="flex-spacer"></div>
+  <a md-button routerLink="auth" *ngIf="!afAuth.auth.currentUser">Login</a>
+  <a md-button="" *ngIf="afAuth.auth.currentUser">
+    <md-icon>person</md-icon>
+    Hallo {{afAuth.auth.currentUser.displayName}}</a>
+  <a md-button *ngIf="afAuth.auth.currentUser" (click)="logout()">Logout</a>
+</nav>

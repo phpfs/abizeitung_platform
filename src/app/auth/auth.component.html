@@ -1,0 +1,45 @@
+<div class="login-container center">
+  <div class="section"><h5 class="indigo-text">Bitte logge dich mit deiner Handynummer ein</h5></div>
+  <div class="card-panel login-panel">
+    <div id="recaptcha-container"></div>
+    <app-loader *ngIf="isLoading"></app-loader>
+    <form class="col s12" #form="ngForm" [hidden]="isLoading || confirmationRequired">
+      <div class='row'>
+        <md-input-container class="col s12">
+          <input mdInput pattern="^\+?[1-9]\d{1,14}$"
+                 required placeholder="Handynummer" type="tel"
+                 [(ngModel)]="userData.number" name="number"
+                 #number="ngModel">
+          <md-error *ngIf="number.errors">
+            Bitte gib eine gültige Handynummer ein (mit +49 am Anfang anstatt 0)
+          </md-error>
+        </md-input-container>
+      </div>
+      <div class='row'>
+        <div class="col s12">
+          <button md-raised-button [disabled]="!form.valid" (click)="register()" id="register"
+                  class="col s5">Registrieren
+          </button>
+        </div>
+      </div>
+    </form>
+    <form class="col s12" #form2="ngForm" *ngIf="!isLoading && confirmationRequired">
+      <p>Bitte gib den Bestätigungscode ein, der dir in der nächsten Minute per SMS zugeschickt wird.</p>
+      <div class='row'>
+        <md-input-container class="col s12">
+          <input mdInput required placeholder="Bestätigungscode" pattern="^[0-9]*$" [minlength]="6" [maxlength]="6"
+                 [(ngModel)]="userData.confirmationCode"
+                 #code="ngModel" name="confirmationCode">
+          <md-error *ngIf="code.errors">
+            Bitte gib einen gültigen Code ein
+          </md-error>
+        </md-input-container>
+        <div class="col s12 login-button-container">
+          <button md-raised-button [disabled]="!form2.valid" (click)="confirm()"
+                  class="col s5">Bestätigen
+          </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

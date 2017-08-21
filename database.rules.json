@@ -1,0 +1,34 @@
+{
+  "rules": {
+    "stilblueten": {
+      "$stilbluete": {
+        ".read": "data.child('uid').val() == auth.uid",
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['content', 'timestamp', 'uid', 'course', 'author']) && newData.child('content').isString() && newData.child('timestamp').isNumber() && auth.uid == newData.child('uid').val()"
+      }
+    },
+    "comment": {
+      "$comment": {
+        ".read": "data.child('uid').val() == auth.uid",
+        ".write": "auth != null",
+        ".validate": "newData.hasChildren(['content', 'timestamp', 'uid', 'id', 'target']) && newData.child('content').isString() && newData.child('timestamp').isNumber() && auth.uid == newData.child('uid').val()"
+      }
+    },
+    "users": {
+      "$uname": {
+        ".read": "data.exists() && data.child('uid').val() == auth.uid",
+        ".write": "(data.exists() && data.child('uid').val() == auth.uid) || (!data.exists() && newData.child('uid').val() == auth.uid)",
+        "stilblueten": {
+          "$stilbluete": {
+            ".validate": "newData.hasChildren(['content', 'timestamp', 'uid', 'course', 'author']) && newData.child('content').isString() && newData.child('timestamp').isNumber() && auth.uid == newData.child('uid').val()"
+          }
+        },
+        "comment": {
+          "$comment": {
+            ".validate": "newData.hasChildren(['content', 'timestamp', 'uid', 'id', 'target']) && newData.child('content').isString() && newData.child('timestamp').isNumber() && auth.uid == newData.child('uid').val()"
+          }
+        }
+      }
+    }
+  }
+}
