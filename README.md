@@ -13,7 +13,7 @@ Create the ```environment.ts``` and ```environment.prod.ts``` from the supplied 
 
 Insert student and teacher names in the ````data.ts```` file that you can create from the template.
 
-To deploy this project on Firebase run ````ng dist -prod```` and then ```firebase deploy```
+To deploy this project on Firebase run ````ng build -prod```` and then ```firebase deploy```
 
 ## Development server
 
