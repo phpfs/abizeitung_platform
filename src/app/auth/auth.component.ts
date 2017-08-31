@@ -41,11 +41,11 @@ export class AuthComponent implements AfterViewInit {
     this.isLoading = true;
     this.confirmationResult.confirm(this.userData.confirmationCode).then(function (result) {
       this.isLoading = false;
-      this.snackBar.open('Login erfolgreich', 'Close');
+      this.snackBar.open('Login erfolgreich!', 'Close');
       this.router.navigate(['/']);
     }.bind(this)).catch(function (error) {
       this.isLoading = false;
-      this.snackBar.open(error.message, 'Close');
+      this.snackBar.open('Es ist ein unbekannter Fehler aufgetreten!', 'Close');
     }.bind(this));
 
   }
