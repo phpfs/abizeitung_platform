@@ -17,7 +17,7 @@
       </div>
       <div class='row'>
         <div class="col s12">
-          <button md-raised-button [disabled]="!form.valid" (click)="register()" id="register"
+          <button md-raised-button type="button" [disabled]="!form.valid" (click)="register()" id="register"
                   class="col s5">Registrieren
           </button>
         </div>
@@ -35,7 +35,7 @@
           </md-error>
         </md-input-container>
         <div class="col s12 login-button-container">
-          <button md-raised-button [disabled]="!form2.valid" (click)="confirm()"
+          <button md-raised-button [disabled]="!form2.valid" type="button" (click)="confirm()"
                   class="col s5">Bestätigen
           </button>
         </div>
