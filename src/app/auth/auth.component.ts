@@ -33,7 +33,7 @@ export class AuthComponent implements AfterViewInit {
     }.bind(this)).catch(function (error) {
       // Error; SMS not sent
       this.isLoading = false;
-      this.snackBar.open(error.message, 'Close');
+      this.snackBar.open('Die Bestätigung-SMS konnte nicht versandt werden!', 'Close');
     }.bind(this));
   }
 
