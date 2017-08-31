@@ -42,9 +42,9 @@ export class FinishProfileComponent implements OnInit {
       .catch(function (error) {
         this.isLoading = false;
         if (error.code === 'PERMISSION_DENIED') {
-          this.snackBar.open('Du bist bereits mit einer anderen Handynummer registriert', 'Close');
+          this.snackBar.open('Du bist bereits mit einer anderen Handynummer registriert!', 'Close');
         } else {
-          this.snackBar.open(error.message, 'Close');
+          this.snackBar.open('Es ist ein unbekannter Fehler aufgetreten!', 'Close');
         }
       }.bind(this));
   }
